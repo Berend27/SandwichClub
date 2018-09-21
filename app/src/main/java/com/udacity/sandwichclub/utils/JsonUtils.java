@@ -20,21 +20,29 @@ import java.util.Vector;
 
 public class JsonUtils {
 
+    public static final String KEY_NAME = "name";
+    public static final String KEY_MAIN_NAME = "mainName";
+    public static final String KEY_ALSO_KNOW_AS = "alsoKnownAs";
+    public static final String KEY_PLACE_OF_ORIGIN = "placeOfOrigin";
+    public static final String KEY_DESCRIPTION = "description";
+    public static final String KEY_INGREDIENTS = "ingredients";
+    public static final String IMAGE_KEY = "image";
+
     public static Sandwich parseSandwichJson(String json) throws JSONException
     {
         JSONObject jSandwich = new JSONObject(json);
-        JSONObject name = jSandwich.getJSONObject("name");
-        String mainName = name.getString("mainName");
-        JSONArray aka = name.getJSONArray("alsoKnownAs");
+        JSONObject name = jSandwich.getJSONObject(KEY_NAME);
+        String mainName = name.getString(KEY_MAIN_NAME);
+        JSONArray aka = name.getJSONArray(KEY_ALSO_KNOW_AS);
         List<String> akaList = new Vector<String>();
         for (int i = 0; i < aka.length(); i++)
             akaList.add(aka.getString(i));
 
-        String originPlace = jSandwich.getString("placeOfOrigin");
-        String description = jSandwich.getString("description");
-        String image = jSandwich.getString("image");
+        String originPlace = jSandwich.getString(KEY_PLACE_OF_ORIGIN);
+        String description = jSandwich.getString(KEY_DESCRIPTION);
+        String image = jSandwich.getString(IMAGE_KEY);
 
-        JSONArray inArray = jSandwich.getJSONArray("ingredients");
+        JSONArray inArray = jSandwich.getJSONArray(KEY_INGREDIENTS);
         List<String> ingredients = new Vector<String>();
         for (int j = 0; j < inArray.length(); j++)
             ingredients.add(inArray.getString(j));
@@ -43,6 +51,8 @@ public class JsonUtils {
         return sandwich;
     }
 
+
+    // Practice method for learning to use JSON
     public static String parseJsonString(String json) throws JSONException
     {
         String sandwich = "";
