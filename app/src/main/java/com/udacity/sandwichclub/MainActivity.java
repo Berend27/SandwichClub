@@ -23,10 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ActionBar titleBar = getActionBar();
-        try {
-            titleBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.darkMustard)));
-        } catch (Exception e) { /* don't do anything about it */ }
+
 
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_names);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
